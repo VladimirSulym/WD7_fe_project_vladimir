@@ -15,11 +15,12 @@ function App(props) {
     },[])
 
     return (
+        <>
       <div className="main-content-wrapper d-flex clearfix">
 
          <SideNav />
-         {props.children} 
-
+         {props.children}
+      </div>
          <Subscribe />
 
         <footer className="footer_area clearfix">
@@ -45,8 +46,7 @@ function App(props) {
                 </div>
             </div>
         </footer>
-
-      </div>
+            </>
     );
 }
 
