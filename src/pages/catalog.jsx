@@ -3,8 +3,27 @@ import OneItem from '../components/catalogelement/oneItem'
 import { useSelector,useDispatch } from 'react-redux';
 import { CatalogFilter } from '../components/filter/index'
 
+function getCategoryID (categoryName, categoryList) {
+    let res='';
+categoryList.forEach((item) => {
+    if (item.url == categoryName) {
+        res = item.id;
+    };
+    }
+)
+    return res;
+}
+
 function CatalogPage(props) {
     const catalogList = useSelector((store)=> store.app.catalogList);
+    const filter = useSelector((store)=> store.app.filter);
+    const categoryList = useSelector((store)=> store.app.categoryList);
+    console.log("PROPS - > ",props);
+    const CategoryID = getCategoryID(props.match.params.categoryName, categoryList);
+    console.log("CategoryID - >", CategoryID);
+    function filterCategory (item) {
+        return CategoryID === item.category
+    }
     return (
         <>
         <CatalogFilter/>
@@ -12,7 +31,7 @@ function CatalogPage(props) {
             <div className="container-fluid">
                 <div className="row">
                     {
-                        catalogList.map((item)=> <OneItem  
+                        catalogList.filter(filterCategory).map((item)=> <OneItem
                             id = {item.id}
                             title = {item.title}
                             price = {item.price}

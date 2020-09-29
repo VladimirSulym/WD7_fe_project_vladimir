@@ -55,6 +55,30 @@ export function updatePrice(payload) {
     payload,
   }
 }
+export function updateFilterCategory(payload) {
+  return {
+    type: ACT.UPDATE_FILTER_CATEGORY,
+    payload,
+  }
+}
+export function updateFilterBrand(payload) {
+  return {
+    type: ACT.UPDATE_FILTER_BRAND,
+    payload,
+  }
+}
+export function updateFilterColor(payload) {
+  return {
+    type: ACT.UPDATE_FILTER_COLOR,
+    payload,
+  }
+}
+export function updateFilterPrice(payload) {
+  return {
+    type: ACT.UPDATE_FILTER_PRICE,
+    payload,
+  }
+}
 
 export function fetchData(searchText) {
 

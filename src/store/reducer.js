@@ -9,6 +9,12 @@ const initialStore = {
   colorList: [],
   brandList: [],
   priceRange: [],
+  filter: {
+    category:'',
+    brand:[],
+    color:'',
+    price:'',
+  }
 };
 
 function rootReducer(store = initialStore, action) {
@@ -57,8 +63,39 @@ function rootReducer(store = initialStore, action) {
         ...store,
         fetchStatus: action.payload,
       }
-
-
+    case ACT.UPDATE_FILTER_CATEGORY: // случилось событие - обновить индикатор загрузки данных с сервера
+      return {
+        ...store,
+        filter: {
+          ...store.filter,
+          category:action.payload,
+        }
+      }
+    case ACT.UPDATE_FILTER_BRAND:
+      const filter = {
+        ...store.filter,
+        brand:action.payload,
+      }// случилось событие - обновить индикатор загрузки данных с сервера
+      return {
+        ...store,
+        filter,
+      }
+    case ACT.UPDATE_FILTER_COLOR: // случилось событие - обновить индикатор загрузки данных с сервера
+      return {
+        ...store,
+        filter: {
+          ...store.filter,
+          color:action.payload,
+        }
+      }
+    case ACT.UPDATE_FILTER_PRICE: // случилось событие - обновить индикатор загрузки данных с сервера
+      return {
+        ...store,
+        filter: {
+          ...store.filter,
+          price:action.payload,
+        }
+      }
   }
 
   return store;

@@ -1,5 +1,7 @@
 import React from 'react'
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
+import {Link} from "react-router-dom";
+import {CATALOG} from '../../router/url';
 
 export function CategoryFilter () {
     const dataList = useSelector(
@@ -8,9 +10,11 @@ export function CategoryFilter () {
         }
     );
 
+    const dispatch = useDispatch();
+
     function renderList (item) {
         return (
-        <li key={item.id}><a href={item.url}>{item.title}</a></li>
+        <li key={item.id}><Link to={`${CATALOG}/${item.url}`}>{item.title}</Link></li>
         )
     }
 
